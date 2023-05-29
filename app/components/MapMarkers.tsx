@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 const MapMarkers = ({ mapLocations }: { mapLocations: MapLocations[] }) => {
   const map = useGoogleMap();
-  const markersRef = useRef<window.google.maps.Marker[]>([]);
+  const markersRef = useRef<any>([]);
 
   useEffect(() => {
     if (!map || markersRef.current.length !== 0) return;
