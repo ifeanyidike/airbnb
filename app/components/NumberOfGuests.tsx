@@ -104,7 +104,7 @@ const NumberOfGuests = ({ customTop, handleClose }: Props) => {
 
         <p className="text-sm text-gray-600">
           This place has a maximum of 2 guests, not including infants. Pets
-          aren't allowed.
+          aren&lsquo;t allowed.
         </p>
         <div className="flex">
           <button onClick={handleClose} className="underline ml-auto">
