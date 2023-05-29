@@ -6,7 +6,11 @@ import { useState, useEffect, Fragment } from "react";
 import { useRouter } from "next/router";
 import { APIDataInfo } from "@component/utils/types";
 import { getRoomById } from "@component/utils/logic";
-import { StarIcon, TrophyIcon } from "@heroicons/react/20/solid";
+import {
+  StarIcon,
+  TrophyIcon,
+  UserCircleIcon,
+} from "@heroicons/react/20/solid";
 import Link from "next/link";
 import Image from "next/image";
 import BedIcon from "@component/app/components/Icons/BedIcon";
@@ -62,7 +66,7 @@ const Rooms = () => {
     if (data.description.length <= 400) return data.description;
     return data.description.slice(0, 400) + "...";
   }
-
+  console.log(data);
   useEffect(() => {
     if (!id || typeof id !== "string") return;
     const _data = getRoomById(id);
@@ -96,7 +100,7 @@ const Rooms = () => {
               {data.visibleReviewCount} reviews
             </Link>
             <span>.</span>
-            {data.host.isSuperhost && (
+            {data.host?.isSuperhost && (
               <>
                 <p className="flex items-center gap-2">
                   <TrophyIcon className="block h-3 w-3" aria-hidden="true" />
@@ -160,15 +164,23 @@ const Rooms = () => {
         <div className="md:w-3/5 w-full">
           <span className="flex justify-between items-center">
             <h3 className="text-2xl">
-              Room in a rental unit hosted by {data.host.name}
+              Room in a rental unit{" "}
+              {data.host?.name ? `hosted by ${data.host.name}` : ""}
             </h3>
-            <Image
-              src={data.host.avatar.url}
-              width={36}
-              height={36}
-              alt={data.host.name}
-              className="rounded-full"
-            />
+            {data.host?.avatar ? (
+              <Image
+                src={data.host?.avatar?.url}
+                width={36}
+                height={36}
+                alt={data.host?.name}
+                className="rounded-full"
+              />
+            ) : (
+              <UserCircleIcon
+                className="block h-9 w-9 fill-cyan-600"
+                aria-hidden="true"
+              />
+            )}
           </span>
           <div className="flex max-[420px]:flex-col flex-row justify-between gap-3 py-5 text-xs">
             <div className="flex flex-col gap-2 border border-solid border-gray-200 shadow ring-1 ring-gray-600 ring-opacity-5 p-5 rounded-3xl grow ">
