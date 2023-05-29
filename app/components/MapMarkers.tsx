@@ -7,7 +7,8 @@ const MapMarkers = ({ mapLocations }: { mapLocations: MapLocations[] }) => {
   const markersRef = useRef<any>([]);
 
   useEffect(() => {
-    if (!map || markersRef.current.length !== 0 || !window.google) return;
+    if (!map || markersRef.current.length !== 0 || !window || !window?.google)
+      return;
 
     markersRef.current = mapLocations
       .slice(0, 5)
