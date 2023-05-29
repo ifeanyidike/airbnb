@@ -37,8 +37,6 @@ const SearchPage = () => {
     setMapLocations(_mapLocations);
   }, [loc]);
 
-  if (data === null) return;
-
   return (
     <div
       className={classNames(
@@ -54,7 +52,7 @@ const SearchPage = () => {
         <>
           <Categories />
           <div className="flex lg:flex-row flex-col px-9 pt-3 pb-7 gap-4">
-            <div className="lg:w-3/5 w-full grid md:grid-cols-3 sm:grid-cols-2 max-[420px]:grid-cols-1 gap-3 py-5">
+            <div className="lg:w-3/5 w-full grid md:grid-cols-3 sm:grid-cols-2 max-[420px]:grid-cols-1 gap-4 py-5">
               {data?.map((d: APIDataInfo, index) => (
                 <ItemCard
                   hasLike
@@ -73,8 +71,12 @@ const SearchPage = () => {
           </div>
         </>
       ) : (
-        <div className="w-full h-96 text-3xl grid place-items-center">
-          The search returned an empty result.
+        <div
+          className={`${
+            data?.length === 0 ? "" : "animate-pulse"
+          } w-full h-96 text-3xl grid place-items-center`}
+        >
+          {data?.length === 0 ? "The search returned an empty result." : ""}
         </div>
       )}
 

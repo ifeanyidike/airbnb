@@ -57,8 +57,8 @@ const ItemCard = (props: Props) => {
       />
 
       <div className="text-sm">
-        <p className="text-sm flex justify-between items-center pt-2">
-          <span className="font-medium">
+        <p className="text-sm flex justify-between items-center pt-2 pb-1 ">
+          <span className="font-medium text-base">
             {info.location.city} {info.location.country.title}
           </span>
           <span className="flex gap-1">
@@ -66,7 +66,9 @@ const ItemCard = (props: Props) => {
             {info.ratings.guestSatisfactionOverall}{" "}
           </span>
         </p>
-        <p>${info.price} night</p>
+        <p>
+          <span className="text-base">${info.price}</span> <span>night</span>
+        </p>
       </div>
     </div>
   );

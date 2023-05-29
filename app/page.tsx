@@ -26,7 +26,7 @@ export default function Home() {
       />
       <Categories />
 
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 py-8">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 py-8">
         {data.map((d: APIDataInfo, index) => (
           <ItemCard hasLike={true} hasRadius={true} data={d} key={index} />
         ))}

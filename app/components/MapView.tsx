@@ -19,7 +19,6 @@ const MapView = ({ mapLocations }: { mapLocations: MapLocations[] }) => {
       lng: firstLoc.lng,
     },
   };
-  console.log(process.env.GOOGLE_MAP_API_KEY);
   return (
     <GoogleMapsProvider
       googleMapsAPIKey={process.env.GOOGLE_MAP_API_KEY || ""}
