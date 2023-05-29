@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 const MapMarkers = ({ mapLocations }: { mapLocations: MapLocations[] }) => {
   const map = useGoogleMap();
-  const markersRef = useRef<google.maps.Marker[]>([]);
+  const markersRef = useRef<window.google.maps.Marker[]>([]);
 
   useEffect(() => {
     if (!map || markersRef.current.length !== 0) return;
@@ -13,15 +13,8 @@ const MapMarkers = ({ mapLocations }: { mapLocations: MapLocations[] }) => {
       .slice(0, 5)
       .map(
         (location: MapLocations) =>
-          new google.maps.Marker({ map, position: location })
+          new window.google.maps.Marker({ map, position: location })
       );
-
-    // return () => {
-    //   markersRef.current.forEach((marker: google.maps.Marker) =>
-    //     marker.setMap(null)
-    //   );
-    //   markersRef.current = [];
-    // };
   }, [map]);
 
   return <></>;
